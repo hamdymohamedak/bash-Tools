@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# حد استخدام الذاكرة (مثلاً 80%)
+memory_limit=80
+
+while true; do
+  memory_usage=$(free | awk '/^Mem/ {print $3/$2 * 100.0}')
+  memory_usage=${memory_usage%.*}  # تحويل القيمة إلى عدد صحيح
+
+  if (( memory_usage > memory_limit )); then
+    echo "استخدام الذاكرة تجاوز الحد المحدد ($memory_limit%). الاستخدام الحالي: $memory_usage%"
+    # إرسال تنبيه (يمكن تعديلها لإرسال بريد إلكتروني أو رسالة نصية)
+  fi
+
+  sleep 60  # الانتظار لمدة دقيقة قبل التحقق مرة أخرى
+done

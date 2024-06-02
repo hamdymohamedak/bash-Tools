@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# مسار مجلد التحميلات
+downloads_dir="$HOME/Downloads"
+
+# حذف الملفات الأقدم من 30 يومًا
+find "$downloads_dir" -type f -mtime +30 -exec rm -f {} \;
+
+echo "تم تنظيف مجلد التحميلات من الملفات الأقدم من 30 يومًا"

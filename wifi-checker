@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# قائمة الخوادم أو المواقع للتحقق منها
+servers=("google.com" "yahoo.com" "facebook.com")
+
+for server in "${servers[@]}"; do
+  if ping -c 1 "$server" &> /dev/null; then
+    echo "WIFI WORKING"
+  else
+    echo "Wifi not working"
+  fi
+done
